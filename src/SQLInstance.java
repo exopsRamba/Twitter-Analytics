@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Date;
 import java.text.DateFormat;
+import java.sql.*;
 
 
 public class SQLInstance {
@@ -38,6 +39,22 @@ public class SQLInstance {
 			}
 			con.close();
 		}catch(Exception e){ System.out.println(e);} 
+	}
+	
+	public void updateTweetProf(boolean prof, long tweetID){
+		PreparedStatement preparedStatement = null;
+		Connection con=null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");  
+			con=DriverManager.getConnection("jdbc:mysql://"+dbAddress+":3306/"+dbName,userName,password);
+			String updateTableSQL = "UPDATE Tweets SET ContainsProfanity='"+Boolean.toString(prof)+"' WHERE TweetID = " + tweetID;			
+			preparedStatement = con.prepareStatement(updateTableSQL);
+			preparedStatement.executeUpdate();
+			con.close();
+			System.out.println("Added Profanity tag");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}		
 	}
 	
 	public void insertUser(String uid, String un){
