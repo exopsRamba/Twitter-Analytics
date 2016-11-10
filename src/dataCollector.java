@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.swing.JOptionPane;
-
+//Potato faced blotter maggot
 
 class dataCollector{
 	static final String[] profanity = {"anal","anus","arse","ass","ballsack","balls","bastard","bitch","biatch","bloody",

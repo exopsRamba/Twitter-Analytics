@@ -20,7 +20,7 @@ import javax.swing.JCheckBox;
 import java.awt.Font;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
-//test
+//test even more testing
 public class Menu {
 
 	private JFrame frame;
@@ -107,7 +107,7 @@ public class Menu {
 		frame.getContentPane().add(lblSearchUsername);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "5", "10", "20", "50", "100", "500"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "5", "10", "20", "50", "100"}));
 		comboBox.setBounds(138, 185, 47, 26);
 		frame.getContentPane().add(comboBox);
 		
