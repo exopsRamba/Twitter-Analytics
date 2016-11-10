@@ -9,7 +9,7 @@ public class fixProfanity {
 			"queer","scrotum","s hit","shit","slut","sh1t","smegma","spunk","tit","tosser",
 			"turd","twat","vagina","wank","whore"};
 	
-	public static void main(String[] args){
+	public static void fixProfanity(){
 		SQLInstance db1= new SQLInstance(	"twitteranalytics.cs6rrovfokv1.us-west-2.rds.amazonaws.com","twitteranalytics", //AWS db info
 				"twitteranalytics","uark3513");
 		
