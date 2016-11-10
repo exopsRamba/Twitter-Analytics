@@ -1,0 +1,59 @@
+Topic Declaration
+	TA program
+	Ultimate goal- collect data from twitter and store to generate reports at a later date
+	Target Audience- individuals/business that want to gather and analyze data about their twitter usage
+		to better their social media output in the future
+Organization
+	Design Method
+		Spiral Method / why / pros cons
+	Overall Requirements Analysis
+		Initial Options Wanted
+		Deciding Feasibility
+		Set Priorities for all Options
+	Overall Design
+		Why Java
+			-OO
+		Why AWS
+			Why MySQL
+			
+	Spiral 1
+		Requirements Analysis
+			Connect to Twitter, Connect DB, feed information between
+			Search by keyword, search by username
+		Design
+			Why Java
+				JDBC, Twitter4J
+			Table design
+		Implementation
+			Made Twitter conneciton class
+			Made SQL connection class with basic insert/select methods
+			Fed username from Twitter search to User class in DB
+		Evaluation
+			Unit Testing
+				Entire first spiral was tested with a dummy main
+			Twitter API calls slow -> need to make sure everything else very fast
+			Twitter4J and JDBC had different implementations for returning data ->
+				Needed uniform data structure to easily move between modules
+			Profanity was a problem we wanted to fix
+	Spiral 2
+		Requirements Analysis
+			Create our own Tweet data structure so we could build an instance from DB data 
+			-(not possible with Status without calling Twitter API)
+			Create GUI to make testing and evaluation much easier and  
+		Design
+		Implementation
+		Evaluation
+			Profanity filter hard to implement at a high success rate
+			
+	
+	
+	
+Documents to produce:
+	Class Diagram
+		Initial
+		Final Implementation
+	Sequence Diagram
+	Activity Diagram
+	Use Cases
+		DB
+		Twitter
