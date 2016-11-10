@@ -40,13 +40,14 @@ class dataCollector{
 			for(int i = 0; i < profanity.length; i++){
 				if(content.contains(profanity[i])){
 					profan = true;
+					System.out.println("Found profanity!  " + profan);
 					//Change characters to ***** later
 					break;
 				}
 			}
-			
+				System.out.println(profan);
 				tweets[z] = new Tweet(s.getId(), s.getUser().getId(), s.getCreatedAt(), s.getFavoriteCount(), s.getRetweetCount(), content, Boolean.toString(profan));
-				
+				System.out.println(tweets[z].getContainsProfanity());
 				
 				System.out.println(content);
 				System.out.println();

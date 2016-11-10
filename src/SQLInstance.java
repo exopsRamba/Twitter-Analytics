@@ -63,6 +63,10 @@ public class SQLInstance {
 			if(!showProfan)
 				query+=" AND ContainsProfanity='false' ";
 			query+=" LIMIT " + numResults;
+			
+			System.out.println(Boolean.toString(showProfan));
+			System.out.println(query);
+			
 			ResultSet rs=stmt.executeQuery(query);  
 			
 		    rs.last();

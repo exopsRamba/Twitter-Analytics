@@ -15,7 +15,7 @@ public class Tweet {
 		createdAt = date;
 		favoriteCount = favCount;
 		retweetCount = reCount;
-		if(pro.equals("TRUE")){
+		if(pro.equals("true")){
 			containsProfanity = true;
 		}else{
 			containsProfanity = false;
