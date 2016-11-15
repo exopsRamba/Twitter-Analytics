@@ -139,7 +139,7 @@ public class Menu {
 						showProfan = chckbxFilterProfanity.isSelected();
 					}catch(Exception e){JOptionPane.showMessageDialog(null,"You have an empty field.", "Error!", JOptionPane.ERROR_MESSAGE);return;}
 					
-					dc.initialize(loc, keyword, username, resultCount, showProfan);
+					dc.execute(loc, keyword, username, resultCount, showProfan);
 					
 			}
 		});
