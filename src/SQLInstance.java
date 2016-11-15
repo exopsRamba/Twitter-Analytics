@@ -21,7 +21,7 @@ public class SQLInstance {
 		password=pass;
 	}
 	
-	public void insertTweet(Tweet[] tweets){
+	public void insertTweets(Tweet[] tweets){
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection("jdbc:mysql://"+dbAddress+":3306/"+dbName,userName,password);   

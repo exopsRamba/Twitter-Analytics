@@ -23,12 +23,6 @@ public class Tweet {
 		content = con;
 	}
 	
-	public String getSQLQuery(){
-		String query = null;
-		
-		return query;
-	}
-	
 	public void print(){
 		System.out.println("Tweet ID: " + tweetID);
 		System.out.println("User ID: " + userID);

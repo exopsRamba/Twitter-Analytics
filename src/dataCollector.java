@@ -52,7 +52,7 @@ class dataCollector{
 				db1.insertUser(Long.toString(s.getUser().getId()), s.getUser().getScreenName());
 			z++;
 		}
-	db1.insertTweet(tweets);//Insert tweets	
+	db1.insertTweets(tweets);//Insert tweets	
 	return tweets;
 	}
 	
