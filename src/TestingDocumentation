@@ -1,0 +1,17 @@
+Test Cases:
+
+Empty String->
+	Searches for random tweets. This is very good for getting random data
+	
+Multiple Words->
+	Finds tweets with all words in any order
+	
+String over 140 characters->
+	Works, returns nothing
+	
+Special characters (\n)
+	Ignores non-alphanumeric, searches for 'n'	
+	
+Just special characters
+	Searches for everything? For some 
+	No errors

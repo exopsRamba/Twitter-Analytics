@@ -47,11 +47,15 @@ Organization
 	
 	
 Documents to produce:
-	Class Diagram
-		Initial
-		Final Implementation
-	Sequence Diagram
+	*Class Diagram
+		*Initial
+		*Final Implementation
+	*Sequence Diagram
 	Activity Diagram
-	Use Cases
-		DB
-		Twitter
+	*Use Cases
+		*DB
+		*Twitter
+	List of "To Be Implemented":
+		Remove Tweets that no longer exist
+		Secure database password
+		

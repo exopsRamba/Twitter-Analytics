@@ -6,10 +6,6 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-//push test
-//push again
-//push againnnnnnnnnnnn
-//hello
 class dataCollector{
 	static final String[] profanity = {"anal","anus","arse","ass","ballsack","balls","bastard","bitch","biatch","bloody",
 										"blowjob","blow job","bollock","bollok","boner","boob","bugger","bum","butt","buttplug",
@@ -26,7 +22,7 @@ class dataCollector{
 											"626995873-PifAe9js72HOSdao6T7aU2Pf0djWs6n0DgY3bpV6","c1Xi6O7UIAOsyepKJZnXnALoGlWzmrUoNXYDxY1OAYIeQ");
 	
 	
-	public static Tweet[] insertToDatabase(List<Status> res, SQLInstance db1, String input){
+	public static Tweet[] insertToDatabase(List<Status> res, String input){
 		Tweet[] tweets = new Tweet[res.size()];
 		int z = 0;
 		for(Status s : res){
@@ -56,7 +52,7 @@ class dataCollector{
 				db1.insertUser(Long.toString(s.getUser().getId()), s.getUser().getScreenName());
 			z++;
 		}
-	db1.insertTweet(tweets);//Insert tweets	
+	db1.insertTweets(tweets);//Insert tweets	
 	return tweets;
 	}
 	
@@ -67,7 +63,7 @@ class dataCollector{
 				
 			List<Status> res = tw.searchKeyword(searchKeyword + " -filter:retweets AND -filter:replies", numSearches);
 			System.out.println(searchKeyword + " -filter:retweets");
-			Tweet [] tweets = insertToDatabase(res, db1, "Keyword");
+			Tweet [] tweets = insertToDatabase(res, "Keyword");
 	//Java date constructor takes in a string and parses each piece of the date into a java date format
 	//Constructor: date(String s)
 			return tweets;
@@ -80,7 +76,7 @@ class dataCollector{
 			System.out.println(searchUser);
 			System.out.println(Long.toString(res.get(0).getUser().getId()));
 			db1.insertUser(Long.toString(res.get(0).getUser().getId()), searchUser);
-			Tweet [] tweets = insertToDatabase(res, db1, "Username");
+			Tweet [] tweets = insertToDatabase(res, "Username");
 			return tweets;
 		}catch(Exception e){
 			System.out.println("ERROR ENCOUNTERED IN SEARCH USERNAME: " + e);
@@ -101,7 +97,7 @@ class dataCollector{
 		return tweets;
 	}
 	
-	public void initialize(int location, String keyword, String username, int resultCount, boolean showProfan){
+	public void execute(int location, String keyword, String username, int resultCount, boolean showProfan){
 		if(location == 65){
 			if(username.equals("")){
 				Results.execute(twitterCollectorKeyword(keyword, resultCount));//Twitter doesn't filter profan in table.

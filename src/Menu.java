@@ -1,5 +1,4 @@
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -20,7 +19,7 @@ import javax.swing.JCheckBox;
 import java.awt.Font;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
-//test even more testing
+
 public class Menu {
 
 	private JFrame frame;
@@ -139,7 +138,7 @@ public class Menu {
 						showProfan = chckbxFilterProfanity.isSelected();
 					}catch(Exception e){JOptionPane.showMessageDialog(null,"You have an empty field.", "Error!", JOptionPane.ERROR_MESSAGE);return;}
 					
-					dc.initialize(loc, keyword, username, resultCount, showProfan);
+					dc.execute(loc, keyword, username, resultCount, showProfan);
 					
 			}
 		});
