@@ -108,7 +108,7 @@ class dataCollector{
 			}else if(keyword.equals("")){
 				Results.execute(twitterCollectorUser(username, resultCount));
 			}else{
-				System.out.println("Username: " + username + " Keyword: " + keyword);
+				Results.execute(twitterCollectorKeyword(keyword, resultCount));//Twitter doesn't filter profan in table.
 			}
 		}else if(location == 66){
 			if(username.equals("")){
