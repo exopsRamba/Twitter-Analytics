@@ -37,12 +37,18 @@ public class Results {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize(Tweet[] tweets) {
+		int tweetLength;
+		if(tweets[0] == null){
+			tweetLength = 0;
+		}else{
+			tweetLength = tweets.length;
+		}
 		frmResults = new JFrame();
 		frmResults.setTitle("Results");
 		frmResults.setBounds(100, 100, 1200, 800);
 		frmResults.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		Object[][] o = new Object[tweets.length][5];
-		for(int y=0; y<tweets.length; y++){
+		for(int y=0; y<tweetLength; y++){
 			o[y][0]=tweets[y].getTweetID();
 			o[y][1]=tweets[y].getContent();
 			o[y][2]=tweets[y].getRetweetCount();

@@ -1,8 +1,10 @@
 import twitter4j.*;
 import twitter4j.Status;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.*;
 
 import javax.swing.JOptionPane;
 
@@ -34,7 +36,7 @@ class dataCollector{
 			boolean profan = false;
 			
 			for(int i = 0; i < profanity.length; i++){
-				if(content.contains(profanity[i])){
+				if(content.toLowerCase().contains(profanity[i])){
 					profan = true;
 					System.out.println("Found profanity!  " + profan);
 					//Change characters to ***** later
@@ -53,10 +55,11 @@ class dataCollector{
 			z++;
 		}
 	db1.insertTweets(tweets);//Insert tweets	
+
 	return tweets;
 	}
 	
-	public static Tweet[] twitterCollectorKeyword(String searchKeyword, int numSearches){
+	public static Tweet[] twitterCollectorKeyword(String searchKeyword, int numSearches, boolean showProfan){
 		//Perform API search with search(query,number of tweets to return)
 				if(searchKeyword == null)
 					System.exit(0);
@@ -66,10 +69,21 @@ class dataCollector{
 			Tweet [] tweets = insertToDatabase(res, "Keyword");
 	//Java date constructor takes in a string and parses each piece of the date into a java date format
 	//Constructor: date(String s)
+			if(!showProfan){
+				List<Tweet> tweetList = new LinkedList<Tweet>(Arrays.asList(tweets));
+				for(int i = 0; i < tweetList.size(); i++){
+					if(tweetList.get(i).getContainsProfanity()){
+						tweetList.remove(i);
+						i--;
+					}
+				}
+			tweets = tweetList.toArray(tweets);	
+			}
+			
 			return tweets;
 	}
 
-	public static Tweet[] twitterCollectorUser(String searchUser, int numResult){
+	public static Tweet[] twitterCollectorUser(String searchUser, int numResult, boolean showProfan){
 		try{
 			Paging page = new Paging(1, numResult);
 			List<Status> res = tw.twitter.getUserTimeline(searchUser, page);
@@ -77,6 +91,16 @@ class dataCollector{
 			System.out.println(Long.toString(res.get(0).getUser().getId()));
 			db1.insertUser(Long.toString(res.get(0).getUser().getId()), searchUser);
 			Tweet [] tweets = insertToDatabase(res, "Username");
+			if(!showProfan){
+				List<Tweet> tweetList = new LinkedList<Tweet>(Arrays.asList(tweets));
+				for(int i = 0; i < tweetList.size(); i++){
+					if(tweetList.get(i).getContainsProfanity()){
+						tweetList.remove(i);
+						i--;
+					}
+				}
+			tweets = tweetList.toArray(tweets);	
+			}
 			return tweets;
 		}catch(Exception e){
 			System.out.println("ERROR ENCOUNTERED IN SEARCH USERNAME: " + e);
@@ -100,11 +124,11 @@ class dataCollector{
 	public void execute(int location, String keyword, String username, int resultCount, boolean showProfan){
 		if(location == 65){
 			if(username.equals("")){
-				Results.execute(twitterCollectorKeyword(keyword, resultCount));//Twitter doesn't filter profan in table.
+				Results.execute(twitterCollectorKeyword(keyword, resultCount, showProfan));//Twitter doesn't filter profan in table.
 			}else if(keyword.equals("")){
-				Results.execute(twitterCollectorUser(username, resultCount));
+				Results.execute(twitterCollectorUser(username, resultCount, showProfan));
 			}else{
-				Results.execute(twitterCollectorKeyword(keyword, resultCount));//Twitter doesn't filter profan in table.
+				Results.execute(twitterCollectorKeyword(keyword, resultCount, showProfan));//Twitter doesn't filter profan in table.
 			}
 		}else if(location == 66){
 			if(username.equals("")){
